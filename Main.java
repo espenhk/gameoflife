@@ -1,8 +1,35 @@
-
 import java.util.Scanner;
-
+/**
+ * Main program of a finite board emulation of Conway's Game of Life.
+ * <p>
+ * Usage:
+ * java Main [dimension] [waitTimeInMSec]
+ * Rules:
+ * <ol>
+ * <li>Any live cell with fewer than two live neighbours dies, 
+ * as if caused by under-population.</li>
+ * <li>Any live cell with two or three live neighbours lives on to the
+ * next generation.</li>
+ * <li>Any live cell with more than three live neighbours dies, as if by
+ * over-population.</li>
+ * <li>Any dead cell with exactly three live neighbours becomes a live
+ * cell, as if by reproduction.</li>
+ * </ol>
+ * </p>
+ * @author  Espen H. Kristensen <espenhk@student.matnat.uio.no>
+ * @version 1.0
+ * @since   2016-03-08
+ */
 public class Main {
+    /**
+     * Current turn of the game.
+     */
     static int turn = 0;
+
+    /**
+     * Main program.
+     * @param args  command line arguments.
+     */
     public static void main(String[] args) {
         GameOfLife game;
         try {
@@ -57,14 +84,14 @@ public class Main {
         game.setSquareAt(1, 3, true);
         */
 
-
-        //game.drawBoard();
-        //game.drawGridBoard();
-
-        //runGame(game);
-
     }
 
+    /**
+     * Start and run the game until interrupted by ctrl+C.
+     *
+     * @param game      game board to run.
+     * @param mSecWait  milliseconds to wait between turns.
+     */
     public final static void runGame(GameOfLife game, int mSecWait) {
         while(true) {
             game.updateBoard();
@@ -79,6 +106,9 @@ public class Main {
         }
     }
 
+    /**
+     * Print the game menu.
+     */
     public final static void printMenu() {
         System.out.println("Select from the menu:");
         System.out.println("[1] Input cells");
